@@ -20,7 +20,8 @@ int Heap::at(int index)
 	return head[index];
 }
 
-void Heap::heapify(int i) {
+void Heap::siftUp(int i) 
+{
 	int temp;
 	int iparent;
 	if (i % 2 == 0) {
@@ -30,7 +31,7 @@ void Heap::heapify(int i) {
 				temp = head[i];
 				head[i] = head[iparent];
 				head[iparent] = temp;
-				heapify(iparent);
+				siftUp(iparent);
 			}
 		}
 	}
@@ -41,10 +42,38 @@ void Heap::heapify(int i) {
 				temp = head[i];
 				head[i] = head[iparent];
 				head[iparent] = temp;
-				heapify(iparent);
+				siftUp(iparent);
 			}
 		}
 	}
+}
+
+void Heap::siftDown(int i)
+{
+	int temp;
+	int ileft = 2 * i + 1, iright = 2 * i + 2;
+	if (ileft < HeapSize)
+		if (head[i] < head[ileft])
+		{
+			temp = head[i];
+			head[i] = head[ileft];
+			head[ileft] = temp;
+			siftDown(ileft);
+		}
+	if (iright < HeapSize)
+		if (head[i] < head[iright])
+		{
+			temp = head[i];
+			head[i] = head[iright];
+			head[iright] = temp;
+			siftDown(iright);
+		}
+}
+
+void Heap::heapify(int i)
+{
+	siftUp(i);
+	siftDown(i);
 }
 
 void Heap::insert(int newElem)
@@ -98,15 +127,15 @@ int Heap::dft_iterator::next()
 	if (!has_next())
 		throw std::out_of_range("No more elements");
 	int temp = head[icurrent];
-	int left = icurrent * 2 + 1;
-	int right = icurrent * 2 + 2;
+	int ileft = icurrent * 2 + 1;
+	int iright = icurrent * 2 + 2;
 	if (icurrent == 0) stack.push(0);
-	if (right < HeapSize)
+	if (iright < HeapSize)
 	{
-		stack.push(right);
-		icurrent = left;
+		stack.push(iright);
+		icurrent = ileft;
 	}
-	else if (left < HeapSize) icurrent = left;
+	else if (ileft < HeapSize) icurrent = ileft;
 	else
 	{
 		icurrent = stack.pop();

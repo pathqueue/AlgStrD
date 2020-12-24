@@ -15,6 +15,8 @@ public:
 	~Heap();
 	int heapsize(); // размер массива
 	int at(int); // значение элемента по индексу
+	void siftUp(int); // просеивание вверх
+	void siftDown(int); // просеивание вниз
 	void heapify(int);  // упорядочение кучи
 	void insert(int); // добавление элемента в дерево по ключу. 
 	bool contains(int); // поиск элемента в дереве по ключу	
