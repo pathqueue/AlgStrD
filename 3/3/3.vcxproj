@@ -125,9 +125,12 @@
   <ItemGroup>
     <ClCompile Include="Heap.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="Iterator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

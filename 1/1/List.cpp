@@ -27,6 +27,7 @@ LinkedList::~LinkedList()
 {
 	clear();
 };
+
 void LinkedList::push_back(int newElem)
 {
 	if (size == 0)
