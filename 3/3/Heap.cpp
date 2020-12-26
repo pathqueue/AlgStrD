@@ -110,11 +110,11 @@ void Heap::remove(int delElem)
 	else throw std::out_of_range("No element");
 }
 
-Heap::dft_iterator::dft_iterator(int* head, int HeapSize, int icorrent)
+Heap::dft_iterator::dft_iterator(int* head, int HeapSize, int icurrent)
 {
 	this->head = head;
 	this->HeapSize = HeapSize;
-	this->icurrent = icorrent;
+	this->icurrent = icurrent;
 }
 
 Heap::dft_iterator::~dft_iterator()
@@ -158,11 +158,11 @@ Iterator* Heap::create_dft_iterator()
 	return new dft_iterator(head, HeapSize, 0);
 }
 
-Heap::bft_iterator::bft_iterator(int* head, int HeapSize, int icorrent) 
+Heap::bft_iterator::bft_iterator(int* head, int HeapSize, int icurrent) 
 {
 	this->head = head;
 	this->HeapSize = HeapSize;
-	this->icurrent = icorrent;
+	this->icurrent = icurrent;
 }
 
 Heap::bft_iterator::~bft_iterator() 
